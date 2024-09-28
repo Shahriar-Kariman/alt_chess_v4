@@ -1,11 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c10jyjqno4uob"]
+[gd_scene load_steps=3 format=3 uid="uid://c10jyjqno4uob"]
 
 [ext_resource type="PackedScene" uid="uid://bw0pevh1wrku7" path="res://board.tscn" id="1_n0yl5"]
+[ext_resource type="Script" path="res://addons/orbit-controls/orbit-controls.gd" id="2_umqhd"]
 
 [node name="main" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.779283, 0.626672, 0, -0.626672, 0.779283, 0, 3.51097, 3.55868)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11861, 0)
@@ -13,4 +11,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11861, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.64027, 0)
 
-[node name="board" parent="." instance=ExtResource("1_n0yl5")]
+[node name="board" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_n0yl5")]
+camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.33795, 3.72934)
+
+[node name="OrbitControls" type="Node3D" parent="."]
+script = ExtResource("2_umqhd")
+_camera = NodePath("../Camera3D")
