@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func  set_notation(col, r):
+func set_notation(col, r):
 	notation.column = col
 	notation.row = r
 

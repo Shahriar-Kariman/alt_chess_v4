@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c10jyjqno4uob"]
+[gd_scene load_steps=5 format=3 uid="uid://c10jyjqno4uob"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_c5b25"]
 [ext_resource type="PackedScene" uid="uid://bw0pevh1wrku7" path="res://board.tscn" id="1_n0yl5"]
+[ext_resource type="PackedScene" uid="uid://bqh63lsartdci" path="res://piece.tscn" id="2_cg80l"]
 [ext_resource type="Script" path="res://addons/orbit-controls/orbit-controls.gd" id="2_umqhd"]
 
 [node name="main" type="Node3D"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11861, 0)
+script = ExtResource("1_c5b25")
+piece_template = ExtResource("2_cg80l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.64027, 0)
