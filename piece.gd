@@ -32,3 +32,8 @@ func update_position():
 	var pos = Global.translate(square.column, square.row)
 	position.x = pos[0]
 	position.z = pos[1]
+
+func is_on(notation):
+	if square.column == notation.column and square.row == notation.row:
+		return true
+	return false

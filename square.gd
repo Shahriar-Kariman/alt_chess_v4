@@ -25,3 +25,6 @@ func set_notation(col, r):
 
 func print_notation():
 	print(notation.column, notation.row)
+
+func get_notation():
+	return notation
