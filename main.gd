@@ -2,16 +2,20 @@ extends Node3D
 
 @export var piece_template : PackedScene
 
-var piece_list = []
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var pawn_1 = piece_template.instantiate()
 	pawn_1.type =  Global.PIECE_TYPE.pawn
 	pawn_1.is_white = true
 	pawn_1.set_square({ 'column':'a', 'row':2 })
-	piece_list.push_front(pawn_1)
+	Global.piece_list.push_front(pawn_1)
 	add_child(pawn_1)
+	var pawn_2 = piece_template.instantiate()
+	pawn_2.type = Global.PIECE_TYPE.pawn
+	pawn_2.is_white = false
+	pawn_2.set_square({ 'column':'a', 'row':7 })
+	Global.piece_list.push_front(pawn_2)
+	add_child(pawn_2)
 
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
@@ -31,13 +35,20 @@ func _process(delta: float) -> void:
 			var square = intersection["collider"].get_parent().get_parent()
 			if square.is_in_group("square"):
 				square.print_notation()
-				check_square(square.get_notation())
+				if Global.game_state.selected_piece:
+					var legal_moves = Global.game_state.selected_piece.legal_moves
+					print(legal_moves)
+					if is_legal(square.get_notation(), legal_moves):
+						Global.game_state.selected_piece.move_to(square.get_notation())
+				var piece = Global.check_square(square.get_notation())
+				if piece and Global.game_state.is_white_turn == piece.is_white:
+					Global.game_state.selected_piece = piece
+					piece.get_legal_moves()
+				else:
+					Global.game_state.selected_piece = null
 
-func check_square(notation):
-	for i in range(piece_list.size()):
-		if piece_list[i].is_on(notation):
-			Global.game_state.selected = piece_list[i]
-			break
-		else:
-			Global.game_state.selected = null
-	print(Global.game_state.selected)
+func is_legal(square, legal_moves):
+	for m in legal_moves:
+		if Global.compare_square_notations(m, square):
+			return true
+	return false

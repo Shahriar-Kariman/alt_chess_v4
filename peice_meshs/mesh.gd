@@ -7,7 +7,7 @@ func _ready() -> void:
 	if is_light:
 		material_override = preload("res://peice_meshs/white_piece_material.tres")
 	else:
-		material_override = preload("res://peice_meshs/white_piece_material.tres")
+		material_override = preload("res://peice_meshs/black_piece_material.tres")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
