@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" path="res://peice_meshs/mesh.gd" id="1_nxp5s"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0t4gt"]
-radius = 0.3
-height = 1.0
+[sub_resource type="TextMesh" id="TextMesh_318cn"]
+text = "P"
 
 [node name="PawnMesh" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.617793, 0)
-mesh = SubResource("CapsuleMesh_0t4gt")
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.349726, 0)
+mesh = SubResource("TextMesh_318cn")
 script = ExtResource("1_nxp5s")

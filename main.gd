@@ -4,18 +4,14 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var pawn_1 = piece_template.instantiate()
-	pawn_1.type =  Global.PIECE_TYPE.pawn
-	pawn_1.is_white = true
-	pawn_1.set_square({ 'column':'a', 'row':2 })
-	Global.piece_list.push_front(pawn_1)
-	add_child(pawn_1)
-	var pawn_2 = piece_template.instantiate()
-	pawn_2.type = Global.PIECE_TYPE.pawn
-	pawn_2.is_white = false
-	pawn_2.set_square({ 'column':'a', 'row':7 })
-	Global.piece_list.push_front(pawn_2)
-	add_child(pawn_2)
+	Global.server_hand_shake()
+	for p in Global.initial_piece_state:
+		var piece = piece_template.instantiate()
+		piece.type =  p.type
+		piece.is_white = p.is_white
+		piece.set_square(p.square)
+		Global.piece_list.push_front(piece)
+		add_child(piece)
 
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
@@ -34,10 +30,10 @@ func _process(delta: float) -> void:
 		if intersection:
 			var square = intersection["collider"].get_parent().get_parent()
 			if square.is_in_group("square"):
-				square.print_notation()
+				#square.print_notation()
 				if Global.game_state.selected_piece:
 					var legal_moves = Global.game_state.selected_piece.legal_moves
-					print(legal_moves)
+					#print(legal_moves)
 					if is_legal(square.get_notation(), legal_moves):
 						Global.game_state.selected_piece.move_to(square.get_notation())
 				var piece = Global.check_square(square.get_notation())

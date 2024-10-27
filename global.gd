@@ -7,6 +7,7 @@ func translate(column, row):
 
 enum PIECE_TYPE {
 	pawn,
+	knight
 }
 
 var piece_list = []
@@ -26,3 +27,61 @@ func compare_square_notations(notation_1, notation_2):
 	if notation_1.column==notation_2.column and notation_1.row==notation_2.row:
 		return true
 	return false
+
+func check_capture(notation):
+	for i in range(Global.piece_list.size()):
+		if Global.piece_list[i].is_on(notation):
+			Global.piece_list[i].queue_free()
+			Global.piece_list.remove_at(i)
+			break
+
+# initial state of the pieces
+var initial_piece_state = []
+# this is supposed to be retrieved in the handshake
+func server_hand_shake():
+	# pawns
+	for i in range(8):
+		initial_piece_state.append_array(
+			[
+				{
+					'type': Global.PIECE_TYPE.pawn,
+					'square': { 'column':char('a'.unicode_at(0)+i), 'row':2 },
+					'is_white': true
+				},
+				{
+					'type': Global.PIECE_TYPE.pawn,
+					'square': { 'column':char('a'.unicode_at(0)+i), 'row':7 },
+					'is_white': false
+				}
+			]
+		)
+	# white pieces
+	initial_piece_state.append_array(
+		[
+			{
+				'type': Global.PIECE_TYPE.knight,
+				'square': { 'column':'b', 'row':1 },
+				'is_white': true
+			},
+			{
+				'type': Global.PIECE_TYPE.knight,
+				'square': { 'column':'g', 'row':1 },
+				'is_white': true
+			}
+		]
+	)
+	# black pieces
+	initial_piece_state.append_array(
+		[
+			{
+				'type': Global.PIECE_TYPE.knight,
+				'square': { 'column':'b', 'row':8 },
+				'is_white': false
+			},
+			{
+				'type': Global.PIECE_TYPE.knight,
+				'square': { 'column':'g', 'row':8 },
+				'is_white': false
+			}
+		]
+	)

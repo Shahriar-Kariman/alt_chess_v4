@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2h81tgucjiaw"]
+
+[ext_resource type="Script" path="res://peice_meshs/mesh.gd" id="1_mxeq8"]
+
+[sub_resource type="TextMesh" id="TextMesh_h3na5"]
+text = "N"
+
+[node name="knight_mesh" type="MeshInstance3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.333513, 0)
+mesh = SubResource("TextMesh_h3na5")
+script = ExtResource("1_mxeq8")
