@@ -8,7 +8,8 @@ func translate(column, row):
 enum PIECE_TYPE {
 	pawn,
 	knight,
-	bishop
+	bishop,
+	rook,
 }
 
 var piece_list = []
@@ -59,6 +60,7 @@ func server_hand_shake():
 	# white pieces
 	initial_piece_state.append_array(
 		[
+			# Knights
 			{
 				'type': Global.PIECE_TYPE.knight,
 				'square': { 'column':'b', 'row':1 },
@@ -69,6 +71,7 @@ func server_hand_shake():
 				'square': { 'column':'g', 'row':1 },
 				'is_white': true
 			},
+			# Bishops
 			{
 				'type': Global.PIECE_TYPE.bishop,
 				'square': { 'column':'c', 'row':1 },
@@ -79,11 +82,23 @@ func server_hand_shake():
 				'square': { 'column':'f', 'row':1 },
 				'is_white': true
 			},
+			# Rooks
+			{
+				'type': Global.PIECE_TYPE.rook,
+				'square': { 'column':'a', 'row':1 },
+				'is_white': true
+			},
+			{
+				'type': Global.PIECE_TYPE.rook,
+				'square': { 'column':'h', 'row':1 },
+				'is_white': true
+			},
 		]
 	)
 	# black pieces
 	initial_piece_state.append_array(
 		[
+			# Knights
 			{
 				'type': Global.PIECE_TYPE.knight,
 				'square': { 'column':'b', 'row':8 },
@@ -94,6 +109,7 @@ func server_hand_shake():
 				'square': { 'column':'g', 'row':8 },
 				'is_white': false
 			},
+			# Bishops
 			{
 				'type': Global.PIECE_TYPE.bishop,
 				'square': { 'column':'c', 'row':8 },
@@ -102,6 +118,17 @@ func server_hand_shake():
 			{
 				'type': Global.PIECE_TYPE.bishop,
 				'square': { 'column':'f', 'row':8 },
+				'is_white': false
+			},
+			# Rooks
+			{
+				'type': Global.PIECE_TYPE.rook,
+				'square': { 'column':'a', 'row':8 },
+				'is_white': false
+			},
+			{
+				'type': Global.PIECE_TYPE.rook,
+				'square': { 'column':'h', 'row':8 },
 				'is_white': false
 			},
 		]

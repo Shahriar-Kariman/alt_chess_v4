@@ -23,6 +23,8 @@ func _ready() -> void:
 			piece_mesh = load("res://peice_meshs/knight_mesh.tscn")
 		Global.PIECE_TYPE.bishop:
 			piece_mesh = load("res://peice_meshs/bishop_mesh.tscn")
+		Global.PIECE_TYPE.rook:
+			piece_mesh = load("res://peice_meshs/rook_mesh.tscn")
 	var mesh = piece_mesh.instantiate()
 	mesh.is_light = is_white
 	add_child(mesh)
