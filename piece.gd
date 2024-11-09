@@ -61,3 +61,5 @@ func get_legal_moves():
 			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
 		Global.PIECE_TYPE.bishop:
 			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
+		Global.PIECE_TYPE.rook:
+			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
