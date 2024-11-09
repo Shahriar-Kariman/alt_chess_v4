@@ -10,6 +10,8 @@ enum PIECE_TYPE {
 	knight,
 	bishop,
 	rook,
+	queen,
+	king
 }
 
 var piece_list = []
@@ -93,6 +95,18 @@ func server_hand_shake():
 				'square': { 'column':'h', 'row':1 },
 				'is_white': true
 			},
+			# Queen
+			{
+				'type': Global.PIECE_TYPE.queen,
+				'square': { 'column':'d', 'row':1 },
+				'is_white': true
+			},
+			# King
+			{
+				'type': Global.PIECE_TYPE.king,
+				'square': { 'column':'e', 'row':1 },
+				'is_white': true
+			},
 		]
 	)
 	# black pieces
@@ -129,6 +143,18 @@ func server_hand_shake():
 			{
 				'type': Global.PIECE_TYPE.rook,
 				'square': { 'column':'h', 'row':8 },
+				'is_white': false
+			},
+			# Queen
+			{
+				'type': Global.PIECE_TYPE.queen,
+				'square': { 'column':'d', 'row':8 },
+				'is_white': false
+			},
+			# King
+			{
+				'type': Global.PIECE_TYPE.king,
+				'square': { 'column':'e', 'row':8 },
 				'is_white': false
 			},
 		]
