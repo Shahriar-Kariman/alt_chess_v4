@@ -7,7 +7,8 @@ func translate(column, row):
 
 enum PIECE_TYPE {
 	pawn,
-	knight
+	knight,
+	bishop
 }
 
 var piece_list = []
@@ -67,7 +68,17 @@ func server_hand_shake():
 				'type': Global.PIECE_TYPE.knight,
 				'square': { 'column':'g', 'row':1 },
 				'is_white': true
-			}
+			},
+			{
+				'type': Global.PIECE_TYPE.bishop,
+				'square': { 'column':'c', 'row':1 },
+				'is_white': true
+			},
+			{
+				'type': Global.PIECE_TYPE.bishop,
+				'square': { 'column':'f', 'row':1 },
+				'is_white': true
+			},
 		]
 	)
 	# black pieces
@@ -82,6 +93,16 @@ func server_hand_shake():
 				'type': Global.PIECE_TYPE.knight,
 				'square': { 'column':'g', 'row':8 },
 				'is_white': false
-			}
+			},
+			{
+				'type': Global.PIECE_TYPE.bishop,
+				'square': { 'column':'c', 'row':8 },
+				'is_white': false
+			},
+			{
+				'type': Global.PIECE_TYPE.bishop,
+				'square': { 'column':'f', 'row':8 },
+				'is_white': false
+			},
 		]
 	)

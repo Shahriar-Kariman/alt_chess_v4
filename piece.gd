@@ -21,6 +21,8 @@ func _ready() -> void:
 			piece_mesh = load("res://peice_meshs/pawn_mesh.tscn")
 		Global.PIECE_TYPE.knight:
 			piece_mesh = load("res://peice_meshs/knight_mesh.tscn")
+		Global.PIECE_TYPE.bishop:
+			piece_mesh = load("res://peice_meshs/bishop_mesh.tscn")
 	var mesh = piece_mesh.instantiate()
 	mesh.is_light = is_white
 	add_child(mesh)
@@ -54,4 +56,6 @@ func get_legal_moves():
 		Global.PIECE_TYPE.pawn:
 			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
 		Global.PIECE_TYPE.knight:
+			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
+		Global.PIECE_TYPE.bishop:
 			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
