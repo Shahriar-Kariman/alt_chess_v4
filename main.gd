@@ -30,13 +30,14 @@ func _process(delta: float) -> void:
 		if intersection:
 			var square = intersection["collider"].get_parent().get_parent()
 			if square.is_in_group("square"):
-				#square.print_notation()
+				# If there is a piece selected
 				if Global.game_state.selected_piece:
 					var legal_moves = Global.game_state.selected_piece.legal_moves
-					#print(legal_moves)
+					# If the selected piece can go to that square
 					if is_legal(square.get_notation(), legal_moves):
 						Global.game_state.selected_piece.move_to(square.get_notation())
 				var piece = Global.check_square(square.get_notation())
+				# select a piece if there is one
 				if piece and Global.game_state.is_white_turn == piece.is_white:
 					Global.game_state.selected_piece = piece
 					piece.get_legal_moves()
