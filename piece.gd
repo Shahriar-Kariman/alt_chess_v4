@@ -62,12 +62,12 @@ func get_legal_moves():
 		Global.PIECE_TYPE.pawn:
 			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
 		Global.PIECE_TYPE.knight:
-			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
+			legal_moves = PieceMovements.knight(is_white, square)
 		Global.PIECE_TYPE.bishop:
-			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
+			legal_moves = PieceMovements.bishop(is_white, square)
 		Global.PIECE_TYPE.rook:
-			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
+			legal_moves = PieceMovements.rook(is_white, square)
 		Global.PIECE_TYPE.queen:
-			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
+			legal_moves = PieceMovements.queen(is_white, square)
 		Global.PIECE_TYPE.king:
-			legal_moves = PieceMovements.pawn(is_white, square, num_moves)
+			legal_moves = PieceMovements.king(is_white, square)
